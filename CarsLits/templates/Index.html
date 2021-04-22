@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css" />
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ h1Title }}</h1>
+    <div class="fastcarDiv">
+        <h2>The fastest</h2>
+        <h3>{{ car[0][0] }}</h3>
+        <p>{{ car[0][2] }} km/h</p>
+        <img src="{{ path }}/{{ car[0][1] }}.jpg" alt="Car picture" />
+    </div>
+    <div>
+        <h2>List of Cars</h2>
+        <p>{{ message }}</p>
+        <table>
+            <tbody>
+                {% for row in values %}
+                <tr class="car">
+                    <td class="text-td">ID: {{row[0]}}</td>
+                    <td class="text-td">MODEL: {{row[1]}}</td>
+                    <td class="text-td">MAX SPEED: {{row[2]}} km/h</tdclass="text-td">
+                    <td class="text-td">COLOUR: {{row[3]}}</td>
+                    <td class="img-td"><img src="{{ path }}/{{ row[4] }}.jpg" alt="Car picture" /></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <form method="post" action="/">
+        <h2>Create, Update and Delete Car</h2>
+        <label for="id">ID<input name="id" type="text" /></label>
+        <label for="model">Model<input name="model" type="text" /></label>
+        <label for="maxspeed">Max Speed<input name="maxspeed" type="text" /></label>
+        <label for="color">Colour<input name="color" type="text" /></label>
+        <label for="image">Image<input name="image" type="text" /></label>
+
+        <input class="create-btn" name="myaction" value="Create Car" type="submit" />
+        <input name="myaction" value="Update Car" type="submit" />
+        <input name="myaction" value="Delete Car" type="submit" />
+    </form>
+</body>
+</html>
